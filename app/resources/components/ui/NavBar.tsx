@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import SwitchTheme from '@/app/resources/components/function/SwitchTheme'
 import Logout from '@/app/resources/components/function/Logout'
 import { svgs } from "../../files/svgs"
-
+import ActionIcon from "./ActionIcon"
 import Image from "next/image"
 
 
@@ -26,10 +26,6 @@ const ActionsBar = () => {
 
     const {isMobile, setIsMobile} = useStore()
 
-    useEffect(()=>{
-        setIsMobile()
-    }, [isMobile])
-
     return (
         <>
         { isMobile ? <MobileMenuComponent /> : <DesktopMenuComponent />}
@@ -49,12 +45,6 @@ const Logo = () => {
 }
 
 const MobileMenuComponent = () => {
-    const [showConfig, setShowContent] = useState(true)
-
-    const {isMobile, setIsMobile, settings} = useStore()
-    const handleConfigClick = () => {
-        setShowContent(!showConfig);
-    }
     return (
         <section className='component-mobile-menu'>
             <ConfigMenu svgIcon={svgs.configIcon}>
@@ -85,9 +75,9 @@ function ConfigMenu ({
                 ?
                 <>{children}</> 
                 : 
-                <div onClick={handleConfigClick} className="component-config">
-                    {svgs.configIcon}
-                </div>
+                <ActionIcon onClick={handleConfigClick} svgIcon={svgs.configIcon} />
+
+                
             }
             
         </div>

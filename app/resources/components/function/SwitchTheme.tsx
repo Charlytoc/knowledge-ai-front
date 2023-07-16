@@ -1,7 +1,7 @@
 import { useStore, themes  } from "@/app/resources/context/store"
 import { useState } from "react"
 import { svgs } from "../../files/svgs";
-import ActionIcon from "../ui/SvgContainer";
+import ActionIcon from "../ui/ActionIcon";
 export default function SwitchTheme ({
     svgIcon,
     
