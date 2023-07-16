@@ -1,6 +1,7 @@
-import './globals.css'
+import '@/app/resources/styles/globals.css'
 import '@/app/resources/styles/components.css'
 import '@/app/resources/styles/pages.css'
+
 import type { Metadata } from 'next'
 import ThemeWrapper from './resources/components/ui/ThemeWrapper'
 import { Inter } from 'next/font/google'
