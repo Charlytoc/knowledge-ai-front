@@ -1,44 +1,48 @@
 import { useStore, themes  } from "@/app/resources/context/store"
 import { useState } from "react"
 import { svgs } from "../../files/svgs";
+
+import { ReactElement } from "react";
+
 import ActionIcon from "../ui/ActionIcon";
 export default function SwitchTheme ({
-    svgIcon,
+    svgIconDark,
+    svgIconLight,
     
   }: {
-    svgIcon: React.ReactNode;
+    svgIconDark: ReactElement;
+    svgIconLight: ReactElement;
   }) {
-    const {setSettings} = useStore()
+    const {setSettings, settings} = useStore()
     const [isDark, setIsDark] = useState(true)
-    const [theme, setTheme] = useState('dark')
+
+ 
     
-    const changeTheme = (currentTheme: string) => {
-        if (currentTheme == themes.DARK) {
-            setTheme(themes.LIGHT)
+    const changeTheme = () => {
+        const darkTheme = {
+            propertyName: 'theme',
+            propertyValue: themes.DARK
         }
-        else {
-            setTheme(themes.DARK)
+        const lightTheme = {
+            propertyName: 'theme',
+            propertyValue: themes.LIGHT
         }
-    }
-
-    function handleThemeChange(){
-
-        changeTheme(theme)
-        setIsDark(!isDark)
-        // console.log(theme);
-        
-        setSettings({
-            propertyName: "theme",
-            propertyValue: theme
-        })
+        if (settings.theme == themes.DARK) {
+            setIsDark(false)
+            setSettings(lightTheme)
+        }
+        else if (settings.theme == themes.LIGHT){
+            setSettings(darkTheme)
+            setIsDark(true)
+        }
     }
 
     return (<>
         {
             isDark ? 
-            <ActionIcon svgIcon={svgs.sunIcon} onClick={handleThemeChange} />
+            <ActionIcon svgIcon={svgIconLight} onClick={changeTheme} />
             :
-            <ActionIcon svgIcon={svgs.moonIcon} onClick={handleThemeChange} />
+            <ActionIcon svgIcon={svgIconDark} onClick={changeTheme} />
         }
     
     </>)

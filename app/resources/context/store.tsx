@@ -1,5 +1,6 @@
+import { stringify } from 'querystring'
 import { create} from 'zustand'
-
+import {StudyPlan} from '@/app/resources/components/ui/CreateStudyPlan'
 export const themes = {
     DARK: 'dark',
     LIGHT: 'light',
@@ -13,10 +14,13 @@ interface Settings {
     aiCharacter: string
     username: string
     aiName: string
+    listOfStudyPlan: Array<StudyPlan>
 }
 
 interface StateTypes {
     bears: number
+    appendChildToKey: (key:string, value:object) => void
+    getLocalStorageKey: (key:string) => Array<string|object>
     isMobile: boolean
     setIsMobile: () => void
     increasePopulation: () => void
@@ -26,14 +30,35 @@ interface StateTypes {
 
 export type SettingProperties = {
     propertyName: string
-    propertyValue: string
+    propertyValue: string|Array<object|string>
 }
 
 
-export const useStore = create<StateTypes>((set) => ({
+export const useStore = create<StateTypes>((set, get) => ({
     bears: 0,
     increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
-    removeAllBears: () => set({ bears: 0 }),
+    appendChildToKey: (key:string, value:object) => {
+        let previus = localStorage.getItem(key);
+
+        let list: Array<object|string>
+
+        if (typeof previus != "string") {
+            list = []
+        }
+        else {
+            list = JSON.parse(previus);
+        }
+
+        list.push(value);
+        localStorage.setItem(key, JSON.stringify(list)) 
+        
+    },
+    getLocalStorageKey: (key:string) => {
+        let previus = localStorage.getItem(key);
+        let dbObject: Array<string|object>
+        dbObject = JSON.parse(typeof previus == "string" ? previus : '[]')
+        return dbObject
+    },
     isMobile: true,
     setIsMobile: () => {
         set({ isMobile: window.innerWidth <= 768 });
@@ -45,10 +70,9 @@ export const useStore = create<StateTypes>((set) => ({
         aiCharacter: 'You are an awesome and useful assistant',
         username: 'Charlytoc',
         aiName: 'Charlytoc assistant',
+        listOfStudyPlan: []
     },
     setSettings: (property)  => {
-        console.log("HELLO");
-        
         set((state)=>({
             ...state,
             settings: {

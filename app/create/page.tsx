@@ -1,14 +1,15 @@
 'use client'
-import StudyPlanCreate from "../resources/components/inDevelopment/CreateStudyPlan";
+import StudyPlanCreate from "../resources/components/ui/CreateStudyPlan";
 import NavBar from "../resources/components/ui/NavBar";
+import StudyPlanList from "../resources/components/ui/StudyPlanList";
 import { themes, useStore } from "@/app/resources/context/store";
-export default function Create () {
-    const {settings} = useStore()
+export default function Create() {
+    const { settings } = useStore()
     return (
-        <main className={`page-create ${settings.theme}`}>
+        <main className={`page page-create ${settings.theme}`}>
             <NavBar />
-            <span>Write your study plan description</span>
-            <StudyPlanCreate/>
+            <StudyPlanCreate />
+            <StudyPlanList />
         </main>
     )
 }
