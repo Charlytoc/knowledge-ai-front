@@ -143,8 +143,29 @@
 }
        
 
+
+
 .component-studyplan-list {
-    >div {
-         background: red;
-    }
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.component-studyplan-list > div {
+  background: red;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  margin: 16px;
+  width: calc(33.33% - 32px); /* Adjust the width based on your desired layout */
+  min-width: 280px;
+}
+
+.component-studyplan-list h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.component-studyplan-list p {
+  font-size: 14px;
+  color: #555;
 }
