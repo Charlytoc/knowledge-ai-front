@@ -14,10 +14,12 @@
   --color-primary-bg: #0e6a54;
   --color-secondary: #0e566a;
 
-  --stroke-dark: #0e566a;
+  /* --stroke-dark: #0e566a;
   --stroke-light: #440e6a;
+   */
   --accent-color-dark: #c6c0c0;
   --accent-color-light: #00131b;
+
  
   --font-grotesk: 'Space Grotesk', sans-serif;
   --color-rosa-palo: #D5A59B;
@@ -70,6 +72,7 @@ input {
 button {
   padding: 5px;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 a {
@@ -79,6 +82,27 @@ a {
   font-weight: 600;
 }
 
+
+svg {
+  cursor: pointer;
+  stroke: inherit;
+  >circle {
+    stroke: inherit;
+  }
+  >path {
+    stroke: inherit;
+  }
+}
+
+svg {
+  height: 100% !important;
+  width: 100% !important;
+  animation: down 1s ease-in 0.5 backwards;
+}
+
+svg:active {
+  animation: up 1s ease-in-out forwards;
+}
 
 
 .font-sm {
@@ -145,6 +169,31 @@ main.page {
 
 main.page.dark {
   background-color: var(--background-dark);
+  .component-study-plan > span {
+    background-color: rgba(87, 82, 82, 0.457);
+    mix-blend-mode: hard-light;
+  }
+
+  .component-form-vertical {
+    border: 1px solid #6a6a6a43;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    /* background: #00141e9b; */
+    background-color: rgba(143, 142, 142, 0.2);
+    >input {
+      color: var(--font-color-dark);
+    }
+
+    >input::placeholder {
+      color: var(--font-color-dark);
+    }
+    >button {
+      color: var(--font-color-dark);
+      /* background-color: #727171b1; */
+      /* border: 0; */
+    }
+    }
+
+
   >* {
     color: var(--accent-color-dark);
   }
@@ -178,25 +227,47 @@ main.page.dark svg {
 /* THEME LIGHT */
 main.page.light {
  background: var(--background-light);
- >* {
-  color: var(--accent-color-light);
+
+ .component-study-plan > span {
+  background-color: #c6c0c0;
+  mix-blend-mode: darken;
+  }
+
+ .component-form-vertical {
+  background-color: var(--accent-color-dark);
+  border: 1px solid #6a6a6a43;
+  background: rgba(2, 2, 2, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  >input {
+    color: #00131b;
+  }
+  >input:active, >input:focus {
+    outline: 1px solid var(--accent-color-light);
+    border: 0;
+  }
+  >input::placeholder {
+    color: #00131b;
+  }
+  >button {
+    background-color: #727171b1;
+    border: 0;
+  }
+  }
+
+  >* {
+    color: var(--accent-color-light);
+    }
+  input {
+    background-color: transparent;
+  }
+  button {
+    color: var(--font-color-light);
+    background-color: transparent;
+  }
+  button:hover {
+    background-color: var(--accent-color-light);
+    color: var(--font-color-dark);
 }
-input {
-  background-color: transparent;
-}
-button {
-  color: var(--font-color-light);
-  background-color: transparent;
-}
-button:hover {
-  background-color: var(--accent-color-light);
-  color: var(--font-color-dark);
-}
-
-
-
-
-
 }
 main.page.light svg {
   stroke: var(--background-dark);
@@ -205,26 +276,16 @@ main.page.light .logo >h1 {
   background-color: var(--accent-color-light);
 }
 
-svg {
-  cursor: pointer;
-  stroke: inherit;
-  >circle {
-    stroke: inherit;
-  }
-  >path {
-    stroke: inherit;
-  }
-}
 
-svg {
-  height: 100% !important;
-  width: 100% !important;
-  animation: down 1s ease-in 0.5 backwards;
-}
 
-svg:active {
-  animation: up 1s ease-in-out forwards;
-}
+
+
+
+
+
+
+
+
 
 @keyframes up {
   0%{

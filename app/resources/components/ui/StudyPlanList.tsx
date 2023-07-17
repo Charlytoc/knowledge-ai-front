@@ -1,4 +1,6 @@
 import { useStore } from "../../context/store"
+import { StudyPlan } from "../../interfaces/studyplan"
+
 export default function StudyPlanList () {
     const {settings} = useStore()
 
@@ -6,12 +8,20 @@ export default function StudyPlanList () {
         <div className="component-studyplan-list">
             {
                 settings.listOfStudyPlan.map((item, index)=>(
-                    <div key={index}>
-                        <h2>{item.name}</h2>
-                        <p>{item.description}</p>
-                    </div>
+                    StudyPlanComponent(item, index)
                 ))
             }
+        </div>
+    )
+}
+
+
+const StudyPlanComponent = (props: StudyPlan, index: number) => {
+    return (
+        <div className="component-study-plan" key={index}>
+                        <h2>{props.name}</h2>
+                        <span>{props.username}</span>
+                        <p>{props.description}</p>
         </div>
     )
 }

@@ -2,13 +2,8 @@ import { useState } from "react";
 import InputFormVertical from "./FormVertical";
 import { FormInput, FormInputProps } from "./FormVertical";
 import { useStore } from "../../context/store";
+import { StudyPlan } from "../../interfaces/studyplan";
 
-export interface StudyPlan {
-  name: string;
-  description: string;
-  username: string;
-  aiDescription?: string;
-}
 
 export default function StudyPlanCreate() {
   const { appendChildToKey, setSettings, settings } = useStore();
@@ -60,6 +55,12 @@ export default function StudyPlanCreate() {
       inputName: "description",
       inputType: "text",
       placeholder: "Description",
+      setter: handleInputChange,
+    },
+    {
+      inputName: "username",
+      inputType: "text",
+      placeholder: "Username",
       setter: handleInputChange,
     },
   ];

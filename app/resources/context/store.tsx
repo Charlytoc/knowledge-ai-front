@@ -1,6 +1,8 @@
-import { stringify } from 'querystring'
 import { create} from 'zustand'
-import {StudyPlan} from '@/app/resources/components/ui/CreateStudyPlan'
+import { studyPlansListDefault } from '../files/studyplans'
+import { StudyPlan } from '../interfaces/studyplan'
+
+
 export const themes = {
     DARK: 'dark',
     LIGHT: 'light',
@@ -70,7 +72,7 @@ export const useStore = create<StateTypes>((set, get) => ({
         aiCharacter: 'You are an awesome and useful assistant',
         username: 'Charlytoc',
         aiName: 'Charlytoc assistant',
-        listOfStudyPlan: []
+        listOfStudyPlan: studyPlansListDefault
     },
     setSettings: (property)  => {
         set((state)=>({
