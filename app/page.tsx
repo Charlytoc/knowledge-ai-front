@@ -3,6 +3,7 @@ import Landing from './resources/components/ui/Landing'
 import { useStore } from './resources/context/store'
 import Link from 'next/link'
 import NavBar from './resources/components/ui/NavBar'
+import Footer from './resources/components/ui/Footer'
 
 export default function Home() {
   const { settings } = useStore()
@@ -10,7 +11,7 @@ export default function Home() {
     <main className={`page page-landing ${settings.theme}`}>
       <NavBar />
       <Landing />
-      
+      <Footer/>
     </main>
   )
 }
