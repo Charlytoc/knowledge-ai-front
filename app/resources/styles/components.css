@@ -136,8 +136,9 @@
     text-align: center;
 }
 
-
-
-.component-landing-section {
-    margin-bottom: 10px;
+.component-landing {
+    display: flex;
+    gap: 9px;
+    flex-direction: column;
 }
+       
