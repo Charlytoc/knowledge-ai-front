@@ -142,3 +142,9 @@
     flex-direction: column;
 }
        
+
+.component-studyplan-list {
+    >div {
+         background: red;
+    }
+}
