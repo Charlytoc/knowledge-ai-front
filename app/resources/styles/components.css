@@ -155,8 +155,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   padding: 16px;
   margin: 16px;
-  width: calc(33.33% - 32px); /* Adjust the width based on your desired layout */
-  min-width: 280px;
+  width: max(500px, 100%)
 }
 
 .component-studyplan-list h2 {
