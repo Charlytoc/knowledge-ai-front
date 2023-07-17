@@ -11,18 +11,18 @@
     height: 10vh;
     position: sticky;
     top: 0;
-    padding: 0px 20px;
+    padding: 0px 8px;
     overflow-y: hidden;
     width: 100vw;
     align-items: center;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(3px);
     > div {
         display: flex;
         width: 350px;
         text-align: center;
         
         > span {
-            font-size: 40px;
+            font-size: 10vmin;
             text-align: left;
             width: 100%;
             font-family: var(--font-title);
@@ -33,12 +33,13 @@
         display: flex;
         align-items: center;
         height: 50% !important;
-        justify-content: center;
+        justify-content: flex-end;
+        background: red;
         >* {
             height: 100% !important;
             align-self: center;
             display: flex;
-            justify-content: center;
+            justify-content: end;
             align-items: center;
         }
         
@@ -82,7 +83,9 @@
 
 
 .component-landing {
-    padding: 0px 20px;
+    padding: 0px 8px;
+    /* TODO: Make this padding */
+    padding-bottom:35px;
     > h1 {
         text-align: center;
         font-weight: 100;
@@ -116,4 +119,53 @@
         text-shadow: 0px 0px 10px rgba(0, 183, 255, 0);
       
     }
+}
+
+.component-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: sticky;
+    bottom: 0;
+    padding: 5px;
+    backdrop-filter: blur(3px);
+    position: fixed; 
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.component-landing {
+    display: flex;
+    gap: 9px;
+    flex-direction: column;
+}
+       
+
+
+
+.component-studyplan-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.component-studyplan-list > div {
+  border-radius: 8px;
+  background: rgba(2, 2, 2, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  padding: 16px;
+  margin: 16px;
+  width: max(500px, 100%)
+}
+
+.component-studyplan-list h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.component-studyplan-list p {
+  font-size: 14px;
+  color: #555;
 }
