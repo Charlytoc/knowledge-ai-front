@@ -89,10 +89,6 @@ a {
     
   }
 
- .page {
-    padding: 0px 8px;
-  }
-
   .component-mobile-menu {
     display: block;
   }
@@ -103,13 +99,11 @@ a {
   .component-mobile-menu {
     display: none;
   }
-  .page {
-    padding: 0px 15px;
-  }
+  
   .component-desktop-menu {
     display: block;
   }
-  /* Tus estilos aquí */
+ 
 }
 
 
