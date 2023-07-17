@@ -8,7 +8,7 @@ interface LandingSectionProps {
 }
 
 // LandingSection component
-const LandingSection = ({ title, description }) => {
+const LandingSection = ({ title, description }: LandingSectionProps) => {
     return (
         <div className="component-landing-section">
             <h2>{title}</h2>
@@ -59,7 +59,7 @@ const landingSectionsData: LandingSectionData[] = [
 ];
 
 
-const Landing: React.FC = () => {
+const Landing = () => {
     return (
         <div className="component-landing">
             <h1>Knowledge-AI: Empowering Your Intellectual Growth</h1>
