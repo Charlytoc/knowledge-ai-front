@@ -83,20 +83,28 @@ a {
 
 /* Estilos para pantallas inferiores a 750px */
 @media (max-width: 750px) {
-  /* Tus estilos aquí */
+
   .component-desktop-menu {
     display: none;
     
   }
+
+ .page {
+    padding: 0px 8px;
+  }
+
   .component-mobile-menu {
     display: block;
   }
+
 }
 
-/* Estilos para pantallas entre 751px y 1200px */
 @media (min-width: 750px) and (min-width: 1440px) {
   .component-mobile-menu {
     display: none;
+  }
+  .page {
+    padding: 0px 15px;
   }
   .component-desktop-menu {
     display: block;
@@ -107,7 +115,6 @@ a {
 
 main.page {
   min-height: 100vh;
-
 }
 /* THEME DARK */
 
