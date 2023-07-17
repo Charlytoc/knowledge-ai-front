@@ -36,6 +36,9 @@ export default function StudyPlanCreate() {
     } else {
       console.error("Element is not a form or does not exist");
     }
+
+  setShowForm((prevState) => !prevState);
+  };
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
