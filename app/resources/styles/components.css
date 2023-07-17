@@ -124,7 +124,7 @@
     align-items: center;
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
     color: white;
-    padding: 20px;
+    padding: 10px;
     backdrop-filter: blur(10px);
     position: fixed; 
     left: 0;
