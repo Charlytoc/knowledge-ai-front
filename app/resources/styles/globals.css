@@ -28,7 +28,9 @@
 html {
   color-scheme: dark;
 }
-
+body {
+  overflow-x: hidden;
+}
 h1 {
   font-family: var(--font-title);
   margin-bottom: 20px;
