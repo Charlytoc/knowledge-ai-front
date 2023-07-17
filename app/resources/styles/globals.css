@@ -1,20 +1,24 @@
 :root {
+
   --font-title: 'Chela One' !important;
   --font-text: 'Rubik', sans-serif !important;
-  --background-dark: #00131b;
-  --background-dark-soft: #021c2770;
-  --background-light: #e7dede;
   --font-color-dark: #e7dede;
   --font-color-light: #00131b;
 
+  --background-dark: #00131b;
+  --background-dark-soft: #021c2770;
+  --background-light: #e7dede;
+  
   --color-primary: rgb(205, 252, 255);
   --color-primary-light: #0e6a557e;
   --color-primary-bg: #0e6a54;
   --color-secondary: #0e566a;
+
   --stroke-dark: #0e566a;
+  --stroke-light: #440e6a;
   --accent-color-dark: #c6c0c0;
   --accent-color-light: #00131b;
-  --stroke-light: #440e6a;
+ 
   --font-grotesk: 'Space Grotesk', sans-serif;
   --color-rosa-palo: #D5A59B;
 }
@@ -31,7 +35,6 @@ html {
 
 h1 {
   font-family: var(--font-title);
-  margin-bottom: 20px;
 }
 
 
@@ -41,7 +44,6 @@ h4,
 h5,
 h6 {
   font-family: var(--font-grotesk);
-  margin-bottom: 5px;
 }
 
 p,
