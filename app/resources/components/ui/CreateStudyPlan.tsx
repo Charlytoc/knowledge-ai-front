@@ -24,10 +24,12 @@ export default function StudyPlanCreate() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     let property = {
       propertyValue: [...settings.listOfStudyPlan, studyPlan],
       propertyName: "listOfStudyPlan",
     };
+
     setSettings(property);
     const formNode = document.getElementById(FORM_ID);
 
@@ -36,10 +38,9 @@ export default function StudyPlanCreate() {
     } else {
       console.error("Element is not a form or does not exist");
     }
+    setShowForm((prevState) => !prevState);
+  }
 
-  setShowForm((prevState) => !prevState);
-  };
-  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setStudyPlan((state) => ({

@@ -57,6 +57,10 @@ textarea {
   font-family: var(--font-text)
 }
 
+p {
+  text-align: justify;
+}
+
 input {
   padding: 5px;
   border-radius: 5px;
@@ -84,6 +88,29 @@ a {
 .font-xl {
   font-size: 25px;
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--accent-color-light)
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #88888836;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
 
 /* Estilos para pantallas inferiores a 750px */
 @media (max-width: 750px) {

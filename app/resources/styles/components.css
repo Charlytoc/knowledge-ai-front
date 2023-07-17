@@ -22,7 +22,7 @@
         text-align: center;
         
         > span {
-            font-size: 10vmin;
+            font-size: min(40px, 8vmin);
             text-align: left;
             width: 100%;
             font-family: var(--font-title);
@@ -34,12 +34,11 @@
         align-items: center;
         height: 50% !important;
         justify-content: flex-end;
-        background: red;
+        /* background: red; */
         >* {
             height: 100% !important;
             align-self: center;
             display: flex;
-            justify-content: end;
             align-items: center;
         }
         
@@ -93,13 +92,8 @@
         /* animation: bloom 5s linear infinite; */
         mix-blend-mode: hard-light;
     }
-    > h2 {
-        /* background-color: var(--background-dark-soft); */
-    }
-    >p {
-        padding: 0px 1px;
-        word-wrap: break-word;
-        text-align: justify;
+    >div {
+        padding: 3px;
     }
 }
 
