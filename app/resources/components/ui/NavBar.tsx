@@ -36,9 +36,9 @@ const ActionsBar = () => {
 
 const Logo = () => {
     return (
-        <section className="logo">
-                <h1 className="title">Knowledge-AI</h1>
-        </section>
+        <div className="logo">
+                <span className="">Knowledge-AI</span>
+        </div>
     )
 }
 
@@ -55,6 +55,7 @@ const MobileMenuComponent = () => {
                 <Link href={'/create'}>Create</Link>
                 <Link href={'/ai'}>AI</Link>
                 <Link href={'/'}>Home</Link>
+                <Link href={'/docs'}>Docs</Link>
             </OptionsMenu>
         </section>
     )
