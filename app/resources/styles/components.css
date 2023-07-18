@@ -144,7 +144,11 @@
     flex-direction: column;
 }
        
-
+.component-landing-section {
+    /* background-color: red; */
+    width: min(100%, 1000px);
+    margin: 0 auto;
+}
 
 
 .component-studyplan-list {
