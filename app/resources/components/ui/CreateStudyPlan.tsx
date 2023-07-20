@@ -2,17 +2,19 @@ import { useState } from "react";
 import InputFormVertical from "./FormVertical";
 import { FormInput, FormInputProps } from "./FormVertical";
 import { useStore } from "../../context/store";
-import { StudyPlan } from "../../interfaces/studyplan";
+import { IStudyPlan } from "../../interfaces/studyplan";
 import axios from 'axios';
 
 
 export default function StudyPlanCreate() {
   const { setSettings, settings } = useStore();
   const FORM_ID = "random-id";
-  const studyPlanDefault: StudyPlan = {
+  const studyPlanDefault: IStudyPlan = {
     title: "",
     description: "",
-    username: "Charlytoc",
+    created_by: {
+      username: "Charlytoc",
+    }
   };
 
   const [studyPlan, setStudyPlan] = useState(studyPlanDefault);
@@ -31,7 +33,7 @@ export default function StudyPlanCreate() {
     };
     const API_URL = process.env.NEXT_PUBLIC_API_URL
     try {
-      await axios.post(`${API_URL}/v1/learning/studyplan`, studyPlan, { headers });
+      await axios.post(`${API_URL}/v1/learning/me/studyplan`, studyPlan, { headers });
       console.log('Study plan sent successfully!');
     } catch (error) {
       console.error('Error sending study plan:', error);

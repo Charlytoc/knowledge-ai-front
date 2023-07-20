@@ -1,6 +1,6 @@
 import { create} from 'zustand'
 import { studyPlansListDefault } from '../files/studyplans'
-import { StudyPlan } from '../interfaces/studyplan'
+import { IStudyPlan } from '../interfaces/studyplan'
 
 
 export const themes = {
@@ -16,7 +16,7 @@ interface Settings {
     aiCharacter: string
     username: string
     aiName: string
-    listOfStudyPlan: Array<StudyPlan>
+    listOfStudyPlan: Array<IStudyPlan>
 }
 
 interface StateTypes {

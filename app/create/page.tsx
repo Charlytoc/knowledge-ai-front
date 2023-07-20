@@ -12,7 +12,7 @@ export default function Create() {
         <main className={`page page-create ${settings.theme}`}>
             <NavBar />
             <StudyPlanCreate />
-            <StudyPlanList />
+            <StudyPlanList studyplans={settings.listOfStudyPlan} />
             <Footer />
         </main>
     )

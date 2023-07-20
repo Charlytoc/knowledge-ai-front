@@ -1,8 +1,11 @@
-export interface StudyPlan {
+export interface IStudyPlan {
+    id?: number
     title: string;
     description: string;
-    username?: string;
+    created_by: IProfile
     aiDescription?: string;
   }
 
-  
+export interface IProfile {
+  username: string
+}  
