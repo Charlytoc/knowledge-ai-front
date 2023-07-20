@@ -3,13 +3,14 @@ import InputFormVertical from "./FormVertical";
 import { FormInput, FormInputProps } from "./FormVertical";
 import { useStore } from "../../context/store";
 import { StudyPlan } from "../../interfaces/studyplan";
+import axios from 'axios';
 
 
 export default function StudyPlanCreate() {
-  const { appendChildToKey, setSettings, settings } = useStore();
+  const { setSettings, settings } = useStore();
   const FORM_ID = "random-id";
   const studyPlanDefault: StudyPlan = {
-    name: "",
+    title: "",
     description: "",
     username: "Charlytoc",
   };
@@ -17,15 +18,31 @@ export default function StudyPlanCreate() {
   const [studyPlan, setStudyPlan] = useState(studyPlanDefault);
   const [showForm, setShowForm] = useState(false); // State for tracking visibility
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const  handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     let property = {
       propertyValue: [...settings.listOfStudyPlan, studyPlan],
       propertyName: "listOfStudyPlan",
     };
-
+    const token = '1EfGWWhkijtac7d0S0UL'; // Replace with your actual token
+    const headers = {
+      Authorization: `Token ${token}`,
+    };
+    const API_URL = process.env.NEXT_PUBLIC_API_URL
+    try {
+      await axios.post(`${API_URL}/v1/learning/studyplan`, studyPlan, { headers });
+      console.log('Study plan sent successfully!');
+    } catch (error) {
+      console.error('Error sending study plan:', error);
+    }
     setSettings(property);
+
+    // I want to use axios and send the studyplan and a token in the authorization header.
+
+    // I will add the token later, but the authorization header must be like: Token <token>
+
+
     const formNode = document.getElementById(FORM_ID);
 
     if (formNode instanceof HTMLFormElement) {
@@ -46,9 +63,9 @@ export default function StudyPlanCreate() {
 
   const studyPlanForm: Array<FormInput> = [
     {
-      inputName: "name",
+      inputName: "title",
       inputType: "text",
-      placeholder: "Name",
+      placeholder: "Title",
       setter: handleInputChange,
     },
     {

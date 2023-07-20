@@ -53,8 +53,9 @@ const MobileMenuComponent = () => {
             </ConfigMenu>
             <OptionsMenu activeMenu={activeMenu} setActiveMenu={setActiveMenu} svgIcon={svgs.optionsIcon}>
                 <Link href={'/create'}>Create</Link>
-                <Link href={'/ai'}>AI</Link>
-                <Link href={'/'}>Home</Link>
+                <Link href={'/learn'}>Learn</Link>
+                <Link href={'/login'}>Login</Link>
+                <Link href={'/settings'}>Settings</Link>
                 <Link href={'/docs'}>Docs</Link>
             </OptionsMenu>
         </section>

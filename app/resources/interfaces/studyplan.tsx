@@ -1,7 +1,7 @@
 export interface StudyPlan {
-    name: string;
+    title: string;
     description: string;
-    username: string;
+    username?: string;
     aiDescription?: string;
   }
 
