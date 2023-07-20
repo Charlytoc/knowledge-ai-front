@@ -10,7 +10,7 @@ export default function Create() {
         <main className={`page page-user ${settings.theme}`}>
             <NavBar />
             <ProfileComponent name={profile.name} profileImage={profile.image} description={profile.biography}  />
-            <StudyPlanList />
+            {/* <StudyPlanList studyplans={} /> */}
             <Footer />
         </main>
     )

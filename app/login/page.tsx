@@ -1,11 +1,11 @@
 'use client'
-
 import Footer from "../resources/components/ui/Footer";
 import NavBar from "../resources/components/ui/NavBar";
 import { themes, useStore } from "@/app/resources/context/store";
 import InputFormVertical from "../resources/components/ui/FormVertical";
 import { useState } from "react";
 import { FormInput } from "../resources/components/ui/FormVertical";
+
 export default function LoginPage() {
 
     const { settings } = useStore()
@@ -20,7 +20,7 @@ export default function LoginPage() {
 }
 
 
-export const LoginForm = () => {
+function LoginForm () {
     const { appendChildToKey, setSettings, settings } = useStore();
     const FORM_ID = "login-id";
     const loginFormDefault = {
