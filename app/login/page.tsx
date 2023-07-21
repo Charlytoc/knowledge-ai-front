@@ -5,7 +5,7 @@ import { themes, useStore } from "@/app/resources/context/store";
 import InputFormVertical from "../resources/components/ui/FormVertical";
 import { useState } from "react";
 import { FormInput } from "../resources/components/ui/FormVertical";
-
+import axios from "axios";
 export default function LoginPage() {
 
     const { settings } = useStore()
@@ -22,20 +22,24 @@ export default function LoginPage() {
 
 function LoginForm () {
     const { appendChildToKey, setSettings, settings } = useStore();
+
     const FORM_ID = "login-id";
     const loginFormDefault = {
-      username: "",
       email: "",
       password: "",
     };
   
     const [form, setForm] = useState(loginFormDefault);
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      console.log(form);
-      console.log(process.env.NEXT_PUBLIC_API_URL);
+      const API_URL = process.env.NEXT_PUBLIC_API_URL
+      try {
+      const response = await axios.post(`${API_URL}/auth/login`, form);
       
+    } catch (error) {
+      console.error('Error sending study plan:', error);
+    }
 
     }
   
