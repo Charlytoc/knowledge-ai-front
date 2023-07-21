@@ -11,7 +11,7 @@ export default function SectionPage() {
             <NavBar />
             {
                 topics.map((item, index) => (
-                    <div>
+                    <div key={index}>
                         <h2>{item.title}</h2>
                         <p>{item.explanation}</p>
                         </div>
