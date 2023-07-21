@@ -5,11 +5,11 @@ import Footer from "../resources/components/ui/Footer";
 import NavBar from "../resources/components/ui/NavBar";
 import { useStore } from "../resources/context/store";
 import StudyPlanList from "../resources/components/ui/StudyPlanList";
+
 export default function LearnPage () {
     const {settings} = useStore()
 
     const [studyPlans, setStudyPlans] = useState([])
-
 
     const getStudyPlans = async () => {
         const token = '1EfGWWhkijtac7d0S0UL'; // Replace with your actual token
