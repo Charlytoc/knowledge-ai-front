@@ -13,7 +13,7 @@ interface Settings {
     theme: string
     language: string
     openaiApiKey: string
-    aiCharacter: string
+    // aiCharacter: string
     username: string
     aiName: string
     listOfStudyPlan: Array<IStudyPlan>
@@ -34,6 +34,11 @@ export type SettingProperties = {
     propertyName: string
     propertyValue: string|Array<object|string>
 }
+
+
+
+
+
 
 
 export const useStore = create<StateTypes>((set, get) => ({
@@ -69,7 +74,6 @@ export const useStore = create<StateTypes>((set, get) => ({
         theme: 'dark',
         language: 'en',
         openaiApiKey: 'A SECRET HERE',
-        aiCharacter: 'You are an awesome and useful assistant',
         username: 'Charlytoc',
         aiName: 'Charlytoc assistant',
         listOfStudyPlan: studyPlansListDefault

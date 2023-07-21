@@ -9,4 +9,5 @@ export interface IStudyPlan {
 
 export interface IProfile {
   username: string
-}  
+} 
+

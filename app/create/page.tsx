@@ -8,6 +8,7 @@ import Footer from "../resources/components/ui/Footer";
 
 export default function Create() {
     const { settings } = useStore()
+
     return (
         <main className={`page page-create ${settings.theme}`}>
             <NavBar />
