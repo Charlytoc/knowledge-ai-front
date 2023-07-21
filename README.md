@@ -38,3 +38,9 @@ npm install
 ```
 npm run dev
 ```
+
+## Checkout to your branch
+```
+git checkout -b your-branch-name
+```
+
