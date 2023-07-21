@@ -15,3 +15,26 @@ In our application you can:
 <!-- We think that we can build on top of **assistants**. And an *assistants* -->
 <!-- TODO: Write how to run the project locally -->
 <!-- TODO: Add a LICENSE -->
+
+
+# Start developing
+
+## Git clone the repository
+```
+git clone https://github.com/Charlytoc/next-zustand-template.git
+```
+
+## Get inside the folder
+```
+cd next-zustand-template
+```
+
+## Install the packages
+```
+npm install
+```
+
+## Run the project
+```
+npm run dev
+```
