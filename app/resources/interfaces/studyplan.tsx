@@ -3,7 +3,7 @@ export interface IStudyPlan {
     title: string;
     slug?: string
     description: string;
-    created_by: IProfile
+    created_by?: IProfile
     aiDescription?: string;
   }
 

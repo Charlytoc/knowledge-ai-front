@@ -32,6 +32,7 @@ export default function LearnPage () {
     return (
         <main className={`page page-learn ${settings.theme}`}>
             <NavBar />
+        
             <StudyPlanList studyplans={studyPlans} />
             <Footer />
         </main>

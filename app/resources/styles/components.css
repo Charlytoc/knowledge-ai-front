@@ -248,3 +248,21 @@
     width: min(100%, 700px);
     margin: 0 auto;
 }
+
+.component-topic-carousel {
+    display: flex;
+    flex-direction: column;
+    width: min(100%, 700px);
+    margin: 0 auto;
+    .actions {
+        display: flex;
+        padding: 10px;
+        justify-content: center;
+        gap: 6px;
+    }
+}
+
+.component-topic {
+    padding: 10px;
+
+}

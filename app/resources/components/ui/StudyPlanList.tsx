@@ -31,7 +31,7 @@ const StudyPlanComponent = (props: IStudyPlan, index: number) => {
     return (
         <div className="component-study-plan" key={index}>
                         <h2 onClick={handleClick}>{props.title}</h2>
-                        <span>{props.created_by.username}</span>
+                        {/* <span>{props.created_by.username}</span> */}
                         <p>{props.description}</p>
         </div>
     )

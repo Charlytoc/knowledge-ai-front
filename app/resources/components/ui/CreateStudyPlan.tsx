@@ -12,9 +12,6 @@ export default function StudyPlanCreate() {
   const studyPlanDefault: IStudyPlan = {
     title: "",
     description: "",
-    created_by: {
-      username: "Charlytoc",
-    }
   };
 
   const [studyPlan, setStudyPlan] = useState(studyPlanDefault);
@@ -76,12 +73,12 @@ export default function StudyPlanCreate() {
       placeholder: "Description",
       setter: handleInputChange,
     },
-    {
-      inputName: "username",
-      inputType: "text",
-      placeholder: "Username",
-      setter: handleInputChange,
-    },
+    // {
+    //   inputName: "username",
+    //   inputType: "text",
+    //   placeholder: "Username",
+    //   setter: handleInputChange,
+    // },
   ];
 
   const handleToggleForm = () => {

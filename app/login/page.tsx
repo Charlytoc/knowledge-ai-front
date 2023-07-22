@@ -1,4 +1,4 @@
-/*"use client";
+"use client";
 import Footer from "../resources/components/ui/Footer";
 import NavBar from "../resources/components/ui/NavBar";
 import { themes, useStore } from "@/app/resources/context/store";
@@ -18,102 +18,94 @@ export default function LoginPage() {
   );
 }
 
-function LoginForm() {
-  const { appendChildToKey, setSettings, settings } = useStore();
+// function LoginForm() {
+//   const { appendChildToKey, setSettings, settings } = useStore();
 
-  const FORM_ID = "login-id";
-  const loginFormDefault = {
-    email: "",
-    password: "",
-  };
+//   const FORM_ID = "login-id";
+//   const loginFormDefault = {
+//     email: "",
+//     password: "",
+//   };
 
-  const [form, setForm] = useState(loginFormDefault);
+//   const [form, setForm] = useState(loginFormDefault);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const API_URL = process.env.NEXT_PUBLIC_API_URL;
-    try {
-      const response = await axios.post(`${API_URL}/auth/login`, form);
-    } catch (error) {
-      console.error("Error sending study plan:", error);
-    }
-  };
+//   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+//     e.preventDefault();
+//     const API_URL = process.env.NEXT_PUBLIC_API_URL;
+//     try {
+//       const response = await axios.post(`${API_URL}/auth/login`, form);
+//     } catch (error) {
+//       console.error("Error sending study plan:", error);
+//     }
+//   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm((state) => ({
-      ...state,
-      [e.target.name]: e.target.value,
-    }));
-  };
+//   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+//     setForm((state) => ({
+//       ...state,
+//       [e.target.name]: e.target.value,
+//     }));
+//   };
 
-  const loginForm: Array<FormInput> = [
-    {
-      inputName: "email",
-      inputType: "email",
-      placeholder: "Email",
-      setter: handleInputChange,
-    },
-    {
-      inputName: "password",
-      inputType: "password",
-      placeholder: "Password",
-      setter: handleInputChange,
-    },
-  ];
-  // Adding inline styles for the login form
-  const loginFormStyles: React.CSSProperties = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    maxWidth: "400px",
-    margin: "0 auto",
-    padding: "20px",
-    border: "1px solid #ccc",
-    borderRadius: "5px",
-    background: "#f9f9f9",
-  };
+//   const loginForm: Array<FormInput> = [
+//     {
+//       inputName: "email",
+//       inputType: "email",
+//       placeholder: "Email",
+//       setter: handleInputChange,
+//     },
+//     {
+//       inputName: "password",
+//       inputType: "password",
+//       placeholder: "Password",
+//       setter: handleInputChange,
+//     },
+//   ];
+//   // Adding inline styles for the login form
+//   const loginFormStyles: React.CSSProperties = {
+//     display: "flex",
+//     flexDirection: "column",
+//     alignItems: "center",
+//     maxWidth: "400px",
+//     margin: "0 auto",
+//     padding: "20px",
+//     border: "1px solid #ccc",
+//     borderRadius: "5px",
+//     background: "#f9f9f9",
+//   };
 
-  const inputStyles: React.CSSProperties = {
-    width: "100%",
-    padding: "10px",
-    marginBottom: "15px",
-    border: "1px solid #ccc",
-    borderRadius: "5px",
-    fontSize: "16px",
-  };
+//   const inputStyles: React.CSSProperties = {
+//     width: "100%",
+//     padding: "10px",
+//     marginBottom: "15px",
+//     border: "1px solid #ccc",
+//     borderRadius: "5px",
+//     fontSize: "16px",
+//   };
 
-  const buttonStyles: React.CSSProperties = {
-    width: "100%",
-    padding: "10px",
-    backgroundColor: "#007BFF",
-    color: "#fff",
-    border: "none",
-    borderRadius: "5px",
-    fontSize: "16px",
-    cursor: "pointer",
-  };
+//   const buttonStyles: React.CSSProperties = {
+//     width: "100%",
+//     padding: "10px",
+//     backgroundColor: "#007BFF",
+//     color: "#fff",
+//     border: "none",
+//     borderRadius: "5px",
+//     fontSize: "16px",
+//     cursor: "pointer",
+//   };
 
-  return (
-    <div className="component-login" style={loginFormStyles}>
-      <h2>Login</h2>
-      <InputFormVertical
-        formId={FORM_ID}
-        submitFunction={handleSubmit}
-        variables={loginForm}
-      />
-    </div>
-  );
-}*/
+//   return (
+//     <div className="component-login" style={loginFormStyles}>
+//       <h2>Login</h2>
+//       <InputFormVertical
+//         formId={FORM_ID}
+//         submitFunction={handleSubmit}
+//         variables={loginForm}
+//       />
+//     </div>
+//   );
+// }
+
 // LoginForm.tsx(Surbhi's Code for login form)
-"use client";
-import Footer from "../resources/components/ui/Footer";
-import NavBar from "../resources/components/ui/NavBar";
-import { useState } from "react";
-import { useStore } from "@/app/resources/context/store";
-import InputFormVertical, {
-  FormInput,
-} from "../resources/components/ui/FormVertical";
-import axios from "axios";
 
 enum FormType {
   Login,
@@ -143,8 +135,8 @@ function LoginForm() {
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
     try {
       setLoading(true);
-      setError(""); // Clear any previous error message
-      setSuccessMessage(""); // Clear any previous success message
+      setError(""); 
+      setSuccessMessage(""); 
 
       // Perform additional validation for signup form
       if (!form.email || !form.password || !form.confirmPassword) {
@@ -160,7 +152,9 @@ function LoginForm() {
       }
 
       // Handle signup logic here
-      const response = await axios.post(`${API_URL}/auth/signup`, form);
+      console.log(form);
+      
+      const response = await axios.post(`${API_URL}/auth/login`, form);
       setLoading(false);
       setForm(loginFormDefault); // Clear signup form data
       setFormType(FormType.Login); // Switch back to login form after successful signup
@@ -172,8 +166,6 @@ function LoginForm() {
       setError("Failed to sign up. Please check your email and password.");
     }
   };
-
-  // ... (rest of the code) ...
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm((state) => ({
@@ -227,7 +219,7 @@ function LoginForm() {
 
   const loginFormStyles: React.CSSProperties = {
     // Login form styles...
-    border: "1px solid #ccc",
+    border: "1px solid gray",
     padding: "20px",
     borderRadius: "5px",
     maxWidth: "400px",
@@ -239,7 +231,7 @@ function LoginForm() {
     width: "100%",
     padding: "10px",
     marginBottom: "10px",
-    border: "1px solid #ccc",
+    border: "1px solid gray",
     borderRadius: "5px",
     outline: "none",
   };
@@ -293,5 +285,3 @@ function LoginForm() {
     </div>
   );
 }
-
-export default LoginForm;
