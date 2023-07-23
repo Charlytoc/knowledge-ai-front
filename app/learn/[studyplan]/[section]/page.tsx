@@ -94,6 +94,7 @@ interface ITopicCarouselProps {
 
 const TopicCarousel = (props: ITopicCarouselProps) => {
     const [currentIndex, setCurrentIndex]  =useState(0)
+    const {apiUrl, getTokenFromLocalStorage} = useStore()
     const [discussionComment, setDiscussionComment]  =useState('')
     const [discussionsList, setDiscussionsList] = useState(props.topics[currentIndex].discussions)
 
@@ -108,14 +109,13 @@ const TopicCarousel = (props: ITopicCarouselProps) => {
     }
 
     const handleStartDiscussion = async () => {
-        const token = '1EfGWWhkijtac7d0S0UL'; // Replace with your actual token
-        const API_URL = process.env.NEXT_PUBLIC_API_URL;
+        const token = getTokenFromLocalStorage();
+        const API_URL = apiUrl;
     
         const data = {
             topic_id: props.topics[currentIndex].id,
             text: discussionComment
         };
-        console.log(data);
         
         const headers = {
             Authorization: 'Token ' + token,
