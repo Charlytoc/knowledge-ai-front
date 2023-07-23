@@ -22,7 +22,7 @@
 
  
   --font-grotesk: 'Space Grotesk', sans-serif;
-  --color-rosa-palo: #D5A59B;
+  --default-max-width: 720px;
 }
 
 * {
@@ -63,11 +63,13 @@ p {
   text-align: justify;
 }
 
-input {
+input,textarea {
   padding: 5px;
   border-radius: 5px;
   border: 0;
+  background-color: transparent;
 }
+
 
 button {
   padding: 5px;
@@ -200,6 +202,10 @@ main.page.dark {
   input {
     background-color: transparent;
   }
+  textarea {
+    background-color: transparent;
+    outline: 1px solid var(--accent-color-dark);
+  }
   button {
     color: var(--font-color-dark);
     background-color: transparent;
@@ -227,6 +233,11 @@ main.page.dark svg {
 /* THEME LIGHT */
 main.page.light {
  background: var(--background-light);
+  textarea {
+    outline: 0;
+    border: #00131b 1px solid;
+    color: var(--font-color-light);
+  }
 
  .component-study-plan > span {
   background-color: #c6c0c0;
@@ -248,6 +259,7 @@ main.page.light {
   >input::placeholder {
     color: #00131b;
   }
+
   >button {
     background-color: #727171b1;
     border: 0;
