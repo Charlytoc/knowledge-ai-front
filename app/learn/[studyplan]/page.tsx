@@ -52,7 +52,6 @@ export default function StudyPlanPage(props: IStudyPlanProps) {
             
             const response = await axios.post(`${API_URL}/v1/learning/studyplan/${props.params.studyplan}`);
             console.log("RECEIVED RESPONSE", response);
-            
             setStudyPlan(response.data)
         } catch (error) {
           console.error('Error sending study plan:', error);
