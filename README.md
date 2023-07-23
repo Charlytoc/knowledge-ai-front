@@ -1,5 +1,7 @@
 # Welcome to Knowledge-AI
 
+Check the backend [here](https://github.com/Charlytoc/knowledge-ai-back)
+
 ## Description 
 Knowledge-AI its an application build to unlock the power of the human knowledge. Our mission its be an useful too to measure the expertise of someone. 
 
