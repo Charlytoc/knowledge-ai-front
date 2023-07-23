@@ -65,13 +65,13 @@ export default function StudyPlanCreate() {
     {
       inputName: "title",
       inputType: "text",
-      placeholder: "Title",
+      placeholder: "Write an interesting title",
       setter: handleInputChange,
     },
     {
       inputName: "description",
       inputType: "text",
-      placeholder: "Description",
+      placeholder: "Write the things you want to learn",
       setter: handleInputChange,
     },
     // {

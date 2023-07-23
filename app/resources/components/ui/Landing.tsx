@@ -30,8 +30,10 @@ const LandingSection = ({ title, description, imageUrl }: ILandingSectionProps) 
             </>
             :
             <>
-            <h2>{title}</h2>
-            <p>{description}</p>
+            <div>
+                <h2>{title}</h2>
+                <p>{description}</p>
+            </div>
             </>
         }
         </div>
@@ -90,6 +92,11 @@ const Landing = () => {
                     imageUrl={sectionData.imageUrl}
                 />
             ))}
+            <div className='call-t-action'>
+                <span>
+                    What do you want to learn?
+                </span>
+            </div>
         </div>
     );
 };

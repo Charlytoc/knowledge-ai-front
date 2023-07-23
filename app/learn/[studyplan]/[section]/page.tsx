@@ -117,6 +117,7 @@ const TopicCarousel = (props: ITopicCarouselProps) => {
             text: discussionComment
         };
         
+        
         const headers = {
             Authorization: 'Token ' + token,
         };

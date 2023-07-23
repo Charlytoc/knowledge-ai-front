@@ -35,9 +35,9 @@ export default function LearnPage () {
     return (
         <main className={`page page-learn ${settings.theme}`}>
             <NavBar />
-            <h3>Create your own Study Plan</h3>
+            <h3>What do you want to learn today?</h3>
             <StudyPlanCreate />
-            <h4>Or explore the community study plans</h4>
+            <h4>Explore the community study plans</h4>
             <StudyPlanList studyplans={studyPlans} />
             <Footer />
         </main>

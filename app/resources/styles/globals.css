@@ -319,3 +319,12 @@ main.page.light .logo >h1 {
 
 
 
+.call-t-action {
+  background-color: var(--background-dark-soft);
+  text-align: center;
+  padding: 15px;
+  font-size: 30px;
+  color: #0c97be;
+  cursor: pointer;
+  font-weight: 600;
+}
