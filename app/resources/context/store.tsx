@@ -22,6 +22,8 @@ interface Settings {
 interface StateTypes {
     bears: number
     appendChildToKey: (key:string, value:object) => void
+    saveTokenToLocalStorage: (tokenKey:string) => void
+    getTokenFromLocalStorage: () => void
     getLocalStorageKey: (key:string) => Array<string|object>
     isMobile: boolean
     setIsMobile: () => void
@@ -39,10 +41,44 @@ export type SettingProperties = {
 
 
 
-
-
 export const useStore = create<StateTypes>((set, get) => ({
     bears: 0,
+    saveTokenToLocalStorage: (tokenKey:string) => {
+        try {
+            // Check if the browser supports localStorage
+            if (typeof localStorage !== 'undefined') {
+              // Save the token key in localStorage under the key name 'token'
+              localStorage.setItem('token', tokenKey);
+            //   console.log('Token saved to localStorage.');
+            } else {
+              console.log('localStorage is not supported in this browser.');
+            }
+          } catch (error) {
+            console.error('Error saving token to localStorage:', error);
+          }
+    },
+    getTokenFromLocalStorage: () => {
+        try {
+            // Check if the browser supports localStorage
+            if (typeof localStorage !== 'undefined') {
+                // Get the token from localStorage
+                const token = localStorage.getItem('token');
+                if (token !== null) {
+                    // console.log('Token retrieved from localStorage.');
+                    return token;
+                } else {
+                    console.log('No token found in localStorage.');
+                    return null;
+                }
+            } else {
+                console.log('localStorage is not supported in this browser.');
+                return null;
+            }
+        } catch (error) {
+            console.error('Error retrieving token from localStorage:', error);
+            return null;
+        }
+    },
     increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
     appendChildToKey: (key:string, value:object) => {
         let previus = localStorage.getItem(key);

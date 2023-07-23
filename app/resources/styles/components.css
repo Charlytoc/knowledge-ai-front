@@ -283,7 +283,8 @@
 }
 
 .component-discussion {
-    padding: 10px;
+    padding: 5px;
+    /* line-height: 20px; */
     background-color: rgba(240, 248, 255, 0.09);
     >div.info {
         padding-left: 10px;
@@ -295,6 +296,7 @@
         justify-content: start;
         >span {
             cursor: pointer;
+            color: #939495ba;
             text-decoration: underline;
         }
     }
@@ -302,5 +304,6 @@
 
 .component-comment {
     padding: 5px;
-    padding-left: 30px;
+    padding-left: 25px;
+    padding-right: 25px;
 }

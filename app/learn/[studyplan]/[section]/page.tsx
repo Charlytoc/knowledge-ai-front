@@ -5,7 +5,7 @@ import { themes, useStore } from "@/app/resources/context/store";
 import { topics } from "@/app/resources/files/topics";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import ReactMarkdown from 'react-markdown'
 
 interface ISectionPageProps {
     params: {
@@ -31,16 +31,21 @@ const defaultSection = {
 }
 
 export default function SectionPage(props:ISectionPageProps) {
-    const { settings } = useStore()
+    const { settings, getTokenFromLocalStorage } = useStore()
     const [section, setSection] = useState(defaultSection)
 
     const getSectionById = async () => {
-        const token = '1EfGWWhkijtac7d0S0UL'; // Replace with your actual token
+        const token = getTokenFromLocalStorage()
+
         const API_URL = process.env.NEXT_PUBLIC_API_URL
         try {
             const response = await axios.get(`${API_URL}/v1/learning/section/${props.params.section}`);
             setSection(response.data)
-            console.log(response.data);
+
+            if (response.data.topics.length < 1) {
+                createTopicsFromSection()
+            }
+            // console.log(response.data);
             
         } catch (error) {
           console.error('Error sending study plan:', error);
@@ -65,9 +70,7 @@ export default function SectionPage(props:ISectionPageProps) {
     return (
         <main className={`page page-section ${settings.theme}`}>
             <NavBar />
-            <h2>{section.title}</h2>
-            <p>{section.objective}</p>
-       
+            <h3>{section.title}</h3>
             {section.topics.length < 1
              ? <button onClick={createTopicsFromSection}>Create topics</button>
             :<TopicCarousel topics={section.topics}/>}
@@ -169,9 +172,10 @@ interface IDiscussionComponentProps {
 
 const DiscussionComponent = (props:IDiscussionComponentProps) => {
     const [commentsAreVisible, setCommentsAreVisible] = useState(false)
+    const {getTokenFromLocalStorage} = useStore()
 
     const handleAIComment = async () => {
-        const token = '1EfGWWhkijtac7d0S0UL'; // Replace with your actual token
+        const token = getTokenFromLocalStorage() // Replace with your actual token
         const API_URL = process.env.NEXT_PUBLIC_API_URL;
     
         const data = {
@@ -192,17 +196,21 @@ const DiscussionComponent = (props:IDiscussionComponentProps) => {
             console.error('Error sending study plan:', error);
         }
     }
+
     return (
         <div className="component-discussion">
             <div className="info">
                 <p>{props.discussion.text}</p>
             </div>
             <div className="actions">
-                <span onClick={()=>setCommentsAreVisible(!commentsAreVisible)}>See comments</span>
+                <span onClick={()=>setCommentsAreVisible(!commentsAreVisible)}>
+                    {commentsAreVisible? 'Hide' : 'See'} comments
+                </span>
                 <span onClick={handleAIComment}>Comment with AI</span>
             </div>
             {commentsAreVisible ?
             <>
+
             {
                 props.discussion.comments.map((item, index)=>(
                     <CommentComponent key={index} comment={item} />
@@ -234,11 +242,48 @@ interface ITopicComponentProps {
 }
 
 const TopicComponent = (props:ITopicComponentProps) => {
+    const {getTokenFromLocalStorage} = useStore()
+
+    const [createdContent, setCreatedContent] = useState('')
+
+    const createTopicContent = async () => {
+        const token = getTokenFromLocalStorage() // Replace with your actual token
+        const API_URL = process.env.NEXT_PUBLIC_API_URL;
+    
+        const data = {
+            topic_id: props.topic.id,
+        }
+
+        const headers = {
+            Authorization: 'Token ' + token,
+        };
+    
+        try {
+            const response = await axios.post(`${API_URL}/v1/learning/topic`,data,{ headers });
+            setCreatedContent(response.data.explanation)
+            
+        } catch (error) {
+            console.error('Error sending study plan:', error);
+        }
+    }
+
+
+    useEffect(()=>{
+        setCreatedContent('');
+
+        if (props.topic.explanation.length < 1) {
+            createTopicContent()
+        }
+    }, [props.topic.id])
+
+
     return (
         <div className="component-topic">
             <h3>{props.topic.title}</h3>
-            {/* <h6>{props.topic.objective}</h6> */}
-            <p>{props.topic.explanation}</p>
+            {
+                createdContent ? <p>{createdContent}</p> : <p>{props.topic.explanation}</p>
+            }
+            
         </div>
     )
 }

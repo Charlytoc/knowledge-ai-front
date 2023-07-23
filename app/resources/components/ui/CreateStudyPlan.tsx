@@ -7,7 +7,7 @@ import axios from 'axios';
 
 
 export default function StudyPlanCreate() {
-  const { setSettings, settings } = useStore();
+  const { setSettings, settings, getTokenFromLocalStorage } = useStore();
   const FORM_ID = "random-id";
   const studyPlanDefault: IStudyPlan = {
     title: "",
@@ -24,7 +24,7 @@ export default function StudyPlanCreate() {
       propertyValue: [...settings.listOfStudyPlan, studyPlan],
       propertyName: "listOfStudyPlan",
     };
-    const token = '1EfGWWhkijtac7d0S0UL'; // Replace with your actual token
+    const token = getTokenFromLocalStorage()
     const headers = {
       Authorization: `Token ${token}`,
     };

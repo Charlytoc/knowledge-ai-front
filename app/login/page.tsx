@@ -1,11 +1,13 @@
 "use client";
 import Footer from "../resources/components/ui/Footer";
 import NavBar from "../resources/components/ui/NavBar";
-import { themes, useStore } from "@/app/resources/context/store";
+import { useStore } from "@/app/resources/context/store";
 import InputFormVertical from "../resources/components/ui/FormVertical";
 import { useState } from "react";
 import { FormInput } from "../resources/components/ui/FormVertical";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+
 export default function LoginPage() {
   const { settings } = useStore();
 
@@ -18,103 +20,14 @@ export default function LoginPage() {
   );
 }
 
-// function LoginForm() {
-//   const { appendChildToKey, setSettings, settings } = useStore();
-
-//   const FORM_ID = "login-id";
-//   const loginFormDefault = {
-//     email: "",
-//     password: "",
-//   };
-
-//   const [form, setForm] = useState(loginFormDefault);
-
-//   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-//     e.preventDefault();
-//     const API_URL = process.env.NEXT_PUBLIC_API_URL;
-//     try {
-//       const response = await axios.post(`${API_URL}/auth/login`, form);
-//     } catch (error) {
-//       console.error("Error sending study plan:", error);
-//     }
-//   };
-
-//   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     setForm((state) => ({
-//       ...state,
-//       [e.target.name]: e.target.value,
-//     }));
-//   };
-
-//   const loginForm: Array<FormInput> = [
-//     {
-//       inputName: "email",
-//       inputType: "email",
-//       placeholder: "Email",
-//       setter: handleInputChange,
-//     },
-//     {
-//       inputName: "password",
-//       inputType: "password",
-//       placeholder: "Password",
-//       setter: handleInputChange,
-//     },
-//   ];
-//   // Adding inline styles for the login form
-//   const loginFormStyles: React.CSSProperties = {
-//     display: "flex",
-//     flexDirection: "column",
-//     alignItems: "center",
-//     maxWidth: "400px",
-//     margin: "0 auto",
-//     padding: "20px",
-//     border: "1px solid #ccc",
-//     borderRadius: "5px",
-//     background: "#f9f9f9",
-//   };
-
-//   const inputStyles: React.CSSProperties = {
-//     width: "100%",
-//     padding: "10px",
-//     marginBottom: "15px",
-//     border: "1px solid #ccc",
-//     borderRadius: "5px",
-//     fontSize: "16px",
-//   };
-
-//   const buttonStyles: React.CSSProperties = {
-//     width: "100%",
-//     padding: "10px",
-//     backgroundColor: "#007BFF",
-//     color: "#fff",
-//     border: "none",
-//     borderRadius: "5px",
-//     fontSize: "16px",
-//     cursor: "pointer",
-//   };
-
-//   return (
-//     <div className="component-login" style={loginFormStyles}>
-//       <h2>Login</h2>
-//       <InputFormVertical
-//         formId={FORM_ID}
-//         submitFunction={handleSubmit}
-//         variables={loginForm}
-//       />
-//     </div>
-//   );
-// }
-
-// LoginForm.tsx(Surbhi's Code for login form)
-
 enum FormType {
   Login,
   Signup,
 }
 
 function LoginForm() {
-  const { appendChildToKey, setSettings, settings } = useStore();
-
+  const { saveTokenToLocalStorage, getTokenFromLocalStorage } = useStore();
+  const router = useRouter()
   const FORM_ID = "login-id";
   const loginFormDefault = {
     email: "",
@@ -139,20 +52,20 @@ function LoginForm() {
       setSuccessMessage(""); 
 
       // Perform additional validation for signup form
-      if (!form.email || !form.password || !form.confirmPassword) {
+      if (!form.email || !form.password) {
         setError("Please fill in all required fields.");
         setLoading(false);
         return;
       }
 
-      if (form.password !== form.confirmPassword) {
-        setError("Passwords do not match.");
-        setLoading(false);
-        return;
+     
+      if (formType == FormType.Signup) {
+        if (form.password !== form.confirmPassword) {
+          setError("Passwords do not match.");
+          setLoading(false);
+          return;
+        }
       }
-
-      // Handle signup logic here
-      console.log(form);
       
       const response = await axios.post(`${API_URL}/auth/login`, form);
       setLoading(false);
@@ -160,6 +73,11 @@ function LoginForm() {
       setFormType(FormType.Login); // Switch back to login form after successful signup
       setSuccessMessage("Sign up successful! You can now log in.");
       // Handle signup success (e.g., display success message)
+      const token = response.data.token
+      saveTokenToLocalStorage(token)
+      router.push('/learn')
+      
+      
     } catch (error) {
       setLoading(false);
       console.error("Error sending study plan:", error);

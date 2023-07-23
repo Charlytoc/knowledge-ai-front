@@ -41,9 +41,8 @@ export default function StudyPlanPage(props: IStudyPlanProps) {
 
 
     const createSections = async () => {
-        console.log("HELLO");
         
-        const token = '1EfGWWhkijtac7d0S0UL'; // Replace with your actual token
+        const token = '1EfGWWhkijtac7d0S0UL'; 
         const API_URL = process.env.NEXT_PUBLIC_API_URL
         try {
             const response = await axios.post(`${API_URL}/v1/learning/studyplan/${props.params.studyplan}`);

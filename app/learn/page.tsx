@@ -6,13 +6,14 @@ import NavBar from "../resources/components/ui/NavBar";
 import { useStore } from "../resources/context/store";
 import StudyPlanList from "../resources/components/ui/StudyPlanList";
 
+import StudyPlanCreate from "../resources/components/ui/CreateStudyPlan";
 export default function LearnPage () {
-    const {settings} = useStore()
+    const {settings, getTokenFromLocalStorage} = useStore()
 
     const [studyPlans, setStudyPlans] = useState([])
 
     const getStudyPlans = async () => {
-        const token = '1EfGWWhkijtac7d0S0UL'; // Replace with your actual token
+        const token = getTokenFromLocalStorage()
         
         const API_URL = process.env.NEXT_PUBLIC_API_URL
         try {
@@ -32,7 +33,9 @@ export default function LearnPage () {
     return (
         <main className={`page page-learn ${settings.theme}`}>
             <NavBar />
-        
+            <h3>Create your own Study Plan</h3>
+            <StudyPlanCreate />
+            <h4>Or explore the community study plans</h4>
             <StudyPlanList studyplans={studyPlans} />
             <Footer />
         </main>
