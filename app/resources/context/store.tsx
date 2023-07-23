@@ -20,14 +20,13 @@ interface Settings {
 }
 
 interface StateTypes {
-    bears: number
     appendChildToKey: (key:string, value:object) => void
     saveTokenToLocalStorage: (tokenKey:string) => void
     getTokenFromLocalStorage: () => void
     getLocalStorageKey: (key:string) => Array<string|object>
     isMobile: boolean
+    apiUrl: string
     setIsMobile: () => void
-    increasePopulation: () => void
     settings: Settings
     setSettings: (property: SettingProperties) => void
 }
@@ -42,7 +41,6 @@ export type SettingProperties = {
 
 
 export const useStore = create<StateTypes>((set, get) => ({
-    bears: 0,
     saveTokenToLocalStorage: (tokenKey:string) => {
         try {
             // Check if the browser supports localStorage
@@ -57,6 +55,8 @@ export const useStore = create<StateTypes>((set, get) => ({
             console.error('Error saving token to localStorage:', error);
           }
     },
+    apiUrl: 'https://charlytoc-personalis-assistens.onrender.com',
+    // apiUrl: 'http://localhost:8000',
     getTokenFromLocalStorage: () => {
         try {
             // Check if the browser supports localStorage
@@ -79,7 +79,6 @@ export const useStore = create<StateTypes>((set, get) => ({
             return null;
         }
     },
-    increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
     appendChildToKey: (key:string, value:object) => {
         let previus = localStorage.getItem(key);
 

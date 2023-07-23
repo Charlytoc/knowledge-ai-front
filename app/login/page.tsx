@@ -26,7 +26,7 @@ enum FormType {
 }
 
 function LoginForm() {
-  const { saveTokenToLocalStorage, getTokenFromLocalStorage } = useStore();
+  const { saveTokenToLocalStorage, apiUrl } = useStore();
   const router = useRouter()
   const FORM_ID = "login-id";
   const loginFormDefault = {
@@ -45,9 +45,8 @@ function LoginForm() {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
-    const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-    console.log(`This is the API_URL: ${API_URL}`);
+    const API_URL = apiUrl;
     
     try {
       setLoading(true);

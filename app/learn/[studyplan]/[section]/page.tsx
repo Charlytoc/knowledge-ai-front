@@ -172,11 +172,11 @@ interface IDiscussionComponentProps {
 
 const DiscussionComponent = (props:IDiscussionComponentProps) => {
     const [commentsAreVisible, setCommentsAreVisible] = useState(false)
-    const {getTokenFromLocalStorage} = useStore()
+    const {getTokenFromLocalStorage, apiUrl} = useStore()
 
     const handleAIComment = async () => {
         const token = getTokenFromLocalStorage() // Replace with your actual token
-        const API_URL = process.env.NEXT_PUBLIC_API_URL;
+        const API_URL = apiUrl;
     
         const data = {
             discussion_id: props.discussion.id,
@@ -242,13 +242,13 @@ interface ITopicComponentProps {
 }
 
 const TopicComponent = (props:ITopicComponentProps) => {
-    const {getTokenFromLocalStorage} = useStore()
+    const {getTokenFromLocalStorage,apiUrl} = useStore()
 
     const [createdContent, setCreatedContent] = useState('')
 
     const createTopicContent = async () => {
         const token = getTokenFromLocalStorage() // Replace with your actual token
-        const API_URL = process.env.NEXT_PUBLIC_API_URL;
+        const API_URL = apiUrl;
     
         const data = {
             topic_id: props.topic.id,

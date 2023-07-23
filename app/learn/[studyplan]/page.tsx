@@ -14,7 +14,8 @@ interface IStudyPlanProps {
 }
 
 export default function StudyPlanPage(props: IStudyPlanProps) {
-    const { settings } = useStore()
+    const { settings, apiUrl } = useStore()
+
     const [studyplan, setStudyPlan] = useState({
         title: '',
         objective: '',
@@ -29,8 +30,8 @@ export default function StudyPlanPage(props: IStudyPlanProps) {
         ]
     })
     const getStudyPlanBySlug = async () => {
-        const token = '1EfGWWhkijtac7d0S0UL'; // Replace with your actual token
-        const API_URL = process.env.NEXT_PUBLIC_API_URL
+        // const token = '1EfGWWhkijtac7d0S0UL'; // Replace with your actual token
+        const API_URL = apiUrl
         try {
             const response = await axios.get(`${API_URL}/v1/learning/studyplan/${props.params.studyplan}`);
             setStudyPlan(response.data)
@@ -42,10 +43,16 @@ export default function StudyPlanPage(props: IStudyPlanProps) {
 
     const createSections = async () => {
         
-        const token = '1EfGWWhkijtac7d0S0UL'; 
-        const API_URL = process.env.NEXT_PUBLIC_API_URL
+        // const token = '1EfGWWhkijtac7d0S0UL'; 
+
+        const API_URL = apiUrl
+
         try {
+            console.log("SENDING REQUEST");
+            
             const response = await axios.post(`${API_URL}/v1/learning/studyplan/${props.params.studyplan}`);
+            console.log("RECEIVED RESPONSE", response);
+            
             setStudyPlan(response.data)
         } catch (error) {
           console.error('Error sending study plan:', error);
@@ -60,7 +67,7 @@ export default function StudyPlanPage(props: IStudyPlanProps) {
         <main className={`page page-studyplan ${settings.theme}`}>
             <NavBar />
            <h2>{studyplan.title}</h2>
-           {studyplan.sections.length < 1 ?            <button onClick={createSections}>Create sections</button> : null}
+           {studyplan.sections.length < 1 ?       <button onClick={createSections}>Create sections</button> : null}
            <h4>{studyplan.objective}</h4>
            <p>{studyplan.ai_description}</p> 
            <div className="sections-container">

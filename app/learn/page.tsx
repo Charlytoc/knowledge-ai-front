@@ -8,14 +8,16 @@ import StudyPlanList from "../resources/components/ui/StudyPlanList";
 
 import StudyPlanCreate from "../resources/components/ui/CreateStudyPlan";
 export default function LearnPage () {
-    const {settings, getTokenFromLocalStorage} = useStore()
+    const {settings, getTokenFromLocalStorage, apiUrl} = useStore()
 
     const [studyPlans, setStudyPlans] = useState([])
 
     const getStudyPlans = async () => {
         const token = getTokenFromLocalStorage()
         
-        const API_URL = process.env.NEXT_PUBLIC_API_URL
+        // const API_URL = process.env.NEXT_PUBLIC_API_URL
+        const API_URL = apiUrl
+        
         try {
           const response = await axios.get(`${API_URL}/v1/learning/studyplan`);
           setStudyPlans(response.data)

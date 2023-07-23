@@ -7,7 +7,7 @@ import axios from 'axios';
 
 
 export default function StudyPlanCreate() {
-  const { setSettings, settings, getTokenFromLocalStorage } = useStore();
+  const { setSettings, settings, getTokenFromLocalStorage,apiUrl } = useStore();
   const FORM_ID = "random-id";
   const studyPlanDefault: IStudyPlan = {
     title: "",
@@ -28,7 +28,8 @@ export default function StudyPlanCreate() {
     const headers = {
       Authorization: `Token ${token}`,
     };
-    const API_URL = process.env.NEXT_PUBLIC_API_URL
+    const API_URL = apiUrl;
+    
     try {
       await axios.post(`${API_URL}/v1/learning/me/studyplan`, studyPlan, { headers });
       console.log('Study plan sent successfully!');
