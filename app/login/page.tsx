@@ -46,6 +46,9 @@ function LoginForm() {
   ) => {
     e.preventDefault();
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+    console.log(`This is the API_URL: ${API_URL}`);
+    
     try {
       setLoading(true);
       setError(""); 
